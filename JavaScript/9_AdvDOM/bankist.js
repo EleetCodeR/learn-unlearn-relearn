@@ -7,6 +7,8 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
 
 const openModal = function (e) {
   e.preventDefault();
@@ -28,4 +30,25 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
     closeModal();
   }
+});
+
+btnScrollTo.addEventListener('click', function (e) {
+  const s1_coords = section1.getBoundingClientRect();
+  console.log(s1_coords);
+
+  //scrolling
+  window.scrollTo(
+    s1_coords.left + window.pageXOffset,
+    s1_coords.top + window.pageYOffset
+  );
+
+  //smooh-scrolling (pass an object)
+  window.scrollTo({
+    left: s1_coords.left + window.pageXOffset,
+    top: s1_coords.top + window.pageYOffset,
+    behavior: 'smooth',
+  });
+
+  //modern-way of scrolling to an element
+  section1.scrollIntoView({ behavior: 'smooth' });
 });
