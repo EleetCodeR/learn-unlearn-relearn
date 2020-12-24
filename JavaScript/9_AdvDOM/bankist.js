@@ -32,6 +32,7 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+//Button-scrolling
 btnScrollTo.addEventListener('click', function (e) {
   const s1_coords = section1.getBoundingClientRect();
   console.log(s1_coords);
@@ -42,7 +43,7 @@ btnScrollTo.addEventListener('click', function (e) {
     s1_coords.top + window.pageYOffset
   );
 
-  //smooh-scrolling (pass an object)
+  //smooth-scrolling (pass an object)
   window.scrollTo({
     left: s1_coords.left + window.pageXOffset,
     top: s1_coords.top + window.pageYOffset,
@@ -51,4 +52,26 @@ btnScrollTo.addEventListener('click', function (e) {
 
   //modern-way of scrolling to an element
   section1.scrollIntoView({ behavior: 'smooth' });
+});
+
+// Page Navigation using EVENT DELEGATION
+
+// Older-way (but adding event listeners like this to every element  defeats the DRY-principle)
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href');
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
+
+// Using Concepts of Event Bubbling to addeventlisteners effectively.
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  // Matching Strategy:
+  if (e.target.classList.contains('nav_link')) {
+    e.preventDefault();
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
 });
