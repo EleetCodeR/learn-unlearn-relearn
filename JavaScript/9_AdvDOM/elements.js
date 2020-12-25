@@ -1,3 +1,4 @@
+'use strict';
 // Selecting Elements :
 console.log(document.documentElement); // 'documentElement' is the actual element and not 'document'.
 console.log(document.head);
