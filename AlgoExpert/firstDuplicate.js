@@ -20,5 +20,14 @@ function firstDuplicateValue(array) {
   return indx !== array.length ? array[indx] : -1;
 }
 
-// Do not edit the line below.
-exports.firstDuplicateValue = firstDuplicateValue;
+// ----------------------------------------------------------
+
+// O(n) Time and O(n) Space.
+function firstDuplicateValue(array) {
+  const visited = new Set();
+  for (const value of array) {
+    if (visited.has(value)) return value;
+    visited.add(value);
+  }
+  return -1;
+}
