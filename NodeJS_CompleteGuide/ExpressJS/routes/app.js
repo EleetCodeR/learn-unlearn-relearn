@@ -8,9 +8,17 @@ const shopRoutes = require("./shop");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(adminRoutes);
-// the requests will automatically be funneled via routes defined in above router.
-// the order or routes matters here as well.
+app.use("/admin", adminRoutes);
+// only the paths beginning with '/admin' segment will go into this middleware and further checking will continue inside the route-file.
+
 app.use(shopRoutes);
+
+// the requests will automatically be funneled via routes defined in above routers.
+// the order or routes matters here as well.
+
+//handling-undefined paths
+app.use((req, res, next) => {
+  res.status(404).send("<h1>Page Not Found!</h1>");
+});
 
 app.listen(3000);
