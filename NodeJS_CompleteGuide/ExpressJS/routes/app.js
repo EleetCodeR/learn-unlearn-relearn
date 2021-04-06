@@ -2,6 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const app = express();
+const path = require("path");
+
+const rootDir = require("../util/path");
 
 const adminRoutes = require("./admin");
 const shopRoutes = require("./shop");
@@ -18,7 +21,8 @@ app.use(shopRoutes);
 
 //handling-undefined paths
 app.use((req, res, next) => {
-  res.status(404).send("<h1>Page Not Found!</h1>");
+  //res.status(404).send("<h1>Page Not Found!</h1>");
+  res.sendFile(path.join(rootDir, "..", "views", "404.html"));
 });
 
 app.listen(3000);
