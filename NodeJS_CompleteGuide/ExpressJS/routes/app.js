@@ -11,6 +11,13 @@ const shopRoutes = require("./shop");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(express.static(path.join(__dirname, "..", "public")));
+// this add a built-in express middleware that is used to serve-files statically (css, js , images etc.)
+// any request from the application will be forwared to this path.
+// we can register muliple folders like this for static content
+// the request will funnel through all the middlewares, untill first hit.
+// as a convention we name such folder as public.
+
 app.use("/admin", adminRoutes);
 // only the paths beginning with '/admin' segment will go into this middleware and further checking will continue inside the route-file.
 
