@@ -1,0 +1,20 @@
+.main__item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.main__item {
+  margin: 0 1rem;
+  padding: 0;
+  text-decoration: none;
+  color: #fd4a03;
+}
+
+.main__item:hover,
+.main__item:active,
+.main__item:active {
+  color: #9915e6;
+  cursor: pointer;
+}
