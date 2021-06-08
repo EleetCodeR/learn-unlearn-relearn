@@ -1,7 +1,7 @@
 function combine(
   in1: number | string,
   in2: number | string,
-  resultConversion: string
+  resultConversion: "as-number" | "as-text"
 ) {
   let result;
   if (
