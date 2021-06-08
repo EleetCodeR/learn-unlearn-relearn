@@ -1,5 +1,5 @@
 enum Role {
-  ADMIN,
+  ADMIN = 5,
   READ_ONLY,
   AUTHOR,
 }
@@ -10,16 +10,19 @@ enum Role {
 //   nickname:string;
 //   hobbies: string[];
 //   role:[number,string];
-// } =
+// } = { //object details
+// }
 
 const person = {
   name: "Boruto",
   age: 14,
   nickname: "Hokage's Son",
   hobbies: ["Ninjutsu", "Thaijutsu"],
-  //role:[2,'student']
+  // role: [2, "student"],
   role: Role.ADMIN,
 };
+// person.role.push("professor");
+
 console.log(person.name);
 console.log(person.nickname);
 
